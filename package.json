@@ -1,0 +1,23 @@
+{
+  "name": "osm-node",
+  "version": "0.0.1",
+  "description": "Example node  project for OSM (Online Scout Manager) API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Danomanic/osm-node.git"
+  },
+  "keywords": [
+    "node",
+    "osm"
+  ],
+  "author": "Daniel J. Pomfret",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Danomanic/osm-node/issues"
+  },
+  "homepage": "https://github.com/Danomanic/osm-node#readme"
+}
