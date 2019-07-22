@@ -1,8 +1,8 @@
 const http = require('http');
 const querystring = require('querystring');
 
-var apiid = '';
-var token = 'XXX';
+var apiid = '<Insert-APIID>';
+var token = '<Intert-Token>';
 
 
 var base = 'https://www.onlinescoutmanager.co.uk/';
