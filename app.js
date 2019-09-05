@@ -1,22 +1,37 @@
-const http = require('http');
+const axios = require('axios');
 const querystring = require('querystring');
 
-const { log, error } = console;
+const { log } = console;
 
-const apiid = '<Insert-APIID>';
-const token = '<Intert-Token>';
+/**
+ * Obtain these from OSM Support
+ */
+const apiid = '<APP-ID>';
+const token = '<TOKEN>';
 
+/**
+ *  Your OSM username and password
+ */
+const myEmail = '<USER-EMAIL>';
+const myPassword = '<USER-PASSWORD>';
 
-const base = 'https://www.onlinescoutmanager.co.uk/';
-const port = 443;
+/**
+ * OSM Base URL
+ */
+const base = 'https://www.onlinescoutmanager.co.uk';
 
-const myEmail = '';
-const myPassword = '';
+/**
+ *  Do not change these, they are set by authorise()
+ */
+let userid = 0;
+let secret = '';
 
-const userid = 0;
-const secret = '';
-
-const performQuery = (path, parts) => {
+/**
+ * Performs the Query to the API Call
+ * @param {*} path the query path
+ * @param {*} parts contains the parts of the query being performed
+ */
+async function performQuery(path, parts) {
   let postParts = [];
   postParts = parts;
   postParts.token = token;
@@ -31,44 +46,74 @@ const performQuery = (path, parts) => {
 
   const postData = querystring.stringify(postParts);
 
-  const options = {
-    hostname: base,
-    port,
-    path,
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Content-Length': Buffer.byteLength(postData),
-    },
-  };
-
-  const req = http.request(options, (res) => {
-    log(`STATUS: ${res.statusCode}`);
-    log(`HEADERS: ${JSON.stringify(res.headers)}`);
-    res.setEncoding('utf8');
-    res.on('data', (chunk) => {
-      log(`BODY: ${chunk}`);
-    });
-    res.on('end', () => {
-      log('No more data in response.');
-    });
+  return new Promise((resolve, reject) => {
+    const url = base + path;
+    axios.post(url, postData).then((response) => {
+      resolve(response.data);
+    })
+      .catch((error) => {
+        reject(error);
+      });
   });
+}
 
-  req.on('error', (e) => {
-    error(`Problem with request: ${e.message}`);
-  });
-
-  req.write(postData);
-  req.end();
-};
-
-const authorise = () => {
+/**
+ * Authorises the app against the OSM API
+ */
+async function authorise() {
   const parts = [];
   parts.email = myEmail;
   parts.password = myPassword;
-  return performQuery('users.php?action=authorise', parts);
-};
+  const out = await performQuery('/users.php?action=authorise', parts);
+  userid = out.userid;
+  secret = out.secret;
+  log('Authorised');
+}
 
-const json = authorise();
+/**
+ * Get's a list of available Terms
+ */
+async function getTerms() {
+  const parts = [];
+  const out = await performQuery('/api.php?action=getTerms', parts);
+  return (out);
+}
 
-log(json);
+/**
+ * Get's a list of Members in a section
+ * @param {*} sectionid Section ID
+ * @param {*} termid Term ID
+ */
+async function getMembers(sectionid, termid) {
+  const parts = [];
+  const out = await performQuery(`/ext/members/contact/?action=getListOfMembers&sort=dob&sectionid=${sectionid}&termid=${termid}`, parts);
+  return out;
+}
+
+/**
+ * Get's Member Details
+ * @param {G} sectionid Section ID
+ * @param {*} memberid Member ID
+ */
+async function getMemberDetails(sectionid, memberid) {
+  const parts = [];
+  parts.associated_id = memberid;
+  parts.associated_type = 'member';
+  const out = await performQuery(`/ext/customdata/?action=getData&section_id=${sectionid}`, parts);
+  return out;
+}
+
+/**
+ * Main
+ */
+async function main() {
+  await authorise();
+  /* Get Terms */
+  log(await getTerms());
+  /* Get Members */
+  log(await getMembers());
+  /* Get Member Details */
+  log(await getMemberDetails('<SECTIONID>', '<MEMBERID>'));
+}
+
+main();
