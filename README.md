@@ -33,8 +33,8 @@ Configuration
 
 Update the API ID and Token
 ```js
-var apiid = '<Insert-APIID>';
-var token = '<Intert-Token>';
+const apiid = '<Insert-APIID>';
+const token = '<Intert-Token>';
 
 const myEmail = '<USER-EMAIL>';
 const myPassword = '<USER-PASSWORD>';
@@ -42,8 +42,8 @@ const myPassword = '<USER-PASSWORD>';
 
 Example:
 ```js
-var apiid = '123';
-var token = '9b7782b7-0f28-4fd8-adb5-6da212e3217b';
+const apiid = '123';
+const token = '9b7782b7-0f28-4fd8-adb5-6da212e3217b';
 
 const myEmail = 'joe@blogs.com';
 const myPassword = 'securepassword';
