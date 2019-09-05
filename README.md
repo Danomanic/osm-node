@@ -35,12 +35,18 @@ Update the API ID and Token
 ```js
 var apiid = '<Insert-APIID>';
 var token = '<Intert-Token>';
+
+const myEmail = '<USER-EMAIL>';
+const myPassword = '<USER-PASSWORD>';
 ```
 
 Example:
 ```js
-var apiid = '35bbc4be-373c-4791-b9b9-6d7fd4c5cfbc';
+var apiid = '123';
 var token = '9b7782b7-0f28-4fd8-adb5-6da212e3217b';
+
+const myEmail = 'joe@blogs.com';
+const myPassword = 'securepassword';
 
 ```
 
