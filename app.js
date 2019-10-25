@@ -104,6 +104,18 @@ async function getMemberDetails(sectionid, memberid) {
 }
 
 /**
+ * Get's a summary of Programmes in a given term or all terms
+ * @param {*} sectionid Section ID
+ * @param {*} termid Term ID
+ */
+async function getProgrammeSummary(sectionid, termid) {
+  termid || (termid = '-1');
+  const parts = [];
+  const out = await performQuery(`/ext/programme/?action=getProgrammeSummary&sectionid=${sectionid}&termid=${termid}`, parts);
+  return out;
+}
+
+/**
  * Main
  */
 async function main() {
@@ -111,9 +123,11 @@ async function main() {
   /* Get Terms */
   log(await getTerms());
   /* Get Members */
-  log(await getMembers());
+  log(await getMembers('<SECTIONID>', '<TERMID>'));
   /* Get Member Details */
   log(await getMemberDetails('<SECTIONID>', '<MEMBERID>'));
+  /* Get Programme Summary */
+  log(await getProgrammeSummary('<SECTIONID>', '<TERMID(OPTIONAL)'));
 }
 
 main();
