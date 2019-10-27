@@ -33,20 +33,20 @@ Configuration
 
 Update the API ID and Token
 ```js
-const apiid = '<Insert-APIID>';
-const token = '<Intert-Token>';
+core.apiid = '<API-ID>';
+core.token = '<API-TOKEN>';
 
-const myEmail = '<USER-EMAIL>';
-const myPassword = '<USER-PASSWORD>';
+core.email = '<EMAIL>';
+core.password = '<PASSWORD>';
 ```
 
 Example:
 ```js
-const apiid = '123';
-const token = '9b7782b7-0f28-4fd8-adb5-6da212e3217b';
+core.apiid = '123';
+core.token = '9b7782b7-0f28-4fd8-adb5-6da212e3217b';
 
-const myEmail = 'joe@blogs.com';
-const myPassword = 'securepassword';
+core.email = 'joe@blogs.com';
+core.password = 'securepassword';
 
 ```
 
