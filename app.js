@@ -137,6 +137,18 @@ async function getEventsStructure(sectionid, eventid) {
   const out = await performQuery(`/ext/events/event/?action=getStructureForEvent&sectionid=${sectionid}&eventid=${eventid}`, parts);
   return out;
 }
+
+/**
+ * Get's attendance of a given Event
+ * @param {*} sectionid Section ID
+ * @param {*} eventid Event ID
+ * @param {*} termid Term ID
+ */
+async function getEventAttendance(sectionid, eventid, termid) {
+  const parts = [];
+  const out = await performQuery(`/ext/events/event/?action=getAttendance&eventid=${eventid}}&sectionid=${sectionid}&termid=${termid}`, parts);
+  return out;
+}
 /**
  * Main
  */
@@ -154,6 +166,8 @@ async function main() {
   log(await getEventsSummary('<SECTIONID>', '<TERMID(OPTIONAL)'));
   /* Get Events Structure & Parameters */
   log(await getEventsStructure('<SECTIONID>', '<EVENTID>'));
+  /* Get Event Attendance */
+  log(await getEventAttendance('<SECTIONID>', '<EVENTID>', '<TERMID>'));
 
 }
 
