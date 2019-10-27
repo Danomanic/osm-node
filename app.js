@@ -126,6 +126,17 @@ async function getEventsSummary(sectionid, termid) {
   const out = await performQuery(`ext/events/summary/?action=get&sectionid=${sectionid}&termid=${termid}`, parts);
   return out;
 }
+
+/**
+ * Get's structure & parameters of a given Events
+ * @param {*} sectionid Section ID
+ * @param {*} eventid Event ID
+ */
+async function getEventsStructure(sectionid, eventid) {
+  const parts = [];
+  const out = await performQuery(`/ext/events/event/?action=getStructureForEvent&sectionid=${sectionid}&eventid=${eventid}`, parts);
+  return out;
+}
 /**
  * Main
  */
@@ -141,6 +152,9 @@ async function main() {
   log(await getProgrammeSummary('<SECTIONID>', '<TERMID(OPTIONAL)'));
   /* Get Events Summary */
   log(await getEventsSummary('<SECTIONID>', '<TERMID(OPTIONAL)'));
+  /* Get Events Structure & Parameters */
+  log(await getEventsStructure('<SECTIONID>', '<EVENTID>'));
+
 }
 
 main();
