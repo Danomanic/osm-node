@@ -106,7 +106,7 @@ async function getMemberDetails(sectionid, memberid) {
 /**
  * Get's a summary of Programmes in a given term or all terms
  * @param {*} sectionid Section ID
- * @param {*} termid Term ID
+ * @param {*} termid Term ID 
  */
 async function getProgrammeSummary(sectionid, termid) {
   termid || (termid = '-1');
@@ -115,6 +115,40 @@ async function getProgrammeSummary(sectionid, termid) {
   return out;
 }
 
+/**
+ * Get's a summary of Events in a given term or all terms
+ * @param {*} sectionid Section ID
+ * @param {*} termid Term ID (Optional)
+ */
+async function getEventsSummary(sectionid, termid) {
+  termid || (termid = '-1');
+  const parts = [];
+  const out = await performQuery(`/ext/events/summary/?action=get&sectionid=${sectionid}&termid=${termid}`, parts);
+  return out;
+}
+
+/**
+ * Get's structure & parameters of a given Events
+ * @param {*} sectionid Section ID
+ * @param {*} eventid Event ID
+ */
+async function getEventStructure(sectionid, eventid) {
+  const parts = [];
+  const out = await performQuery(`/ext/events/event/?action=getStructureForEvent&sectionid=${sectionid}&eventid=${eventid}`, parts);
+  return out;
+}
+
+/**
+ * Get's attendance of a given Event
+ * @param {*} sectionid Section ID
+ * @param {*} eventid Event ID
+ * @param {*} termid Term ID
+ */
+async function getEventAttendance(sectionid, eventid, termid) {
+  const parts = [];
+  const out = await performQuery(`/ext/events/event/?action=getAttendance&eventid=${eventid}&sectionid=${sectionid}&termid=${termid}`, parts);
+  return out;
+}
 /**
  * Main
  */
@@ -128,6 +162,13 @@ async function main() {
   log(await getMemberDetails('<SECTIONID>', '<MEMBERID>'));
   /* Get Programme Summary */
   log(await getProgrammeSummary('<SECTIONID>', '<TERMID(OPTIONAL)'));
+  /* Get Events Summary */
+  log(await getEventsSummary('<SECTIONID>', '<TERMID(OPTIONAL)'));
+  /* Get Events Structure & Parameters */
+  log(await getEventStructure('<SECTIONID>', '<EVENTID>'));
+  /* Get Event Attendance */
+  log(await getEventAttendance('<SECTIONID>', '<EVENTID>', '<TERMID>'));
+
 }
 
 main();
