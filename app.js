@@ -146,7 +146,7 @@ async function getEventStructure(sectionid, eventid) {
  */
 async function getEventAttendance(sectionid, eventid, termid) {
   const parts = [];
-  const out = await performQuery(`/ext/events/event/?action=getAttendance&eventid=${eventid}}&sectionid=${sectionid}&termid=${termid}`, parts);
+  const out = await performQuery(`/ext/events/event/?action=getAttendance&eventid=${eventid}&sectionid=${sectionid}&termid=${termid}`, parts);
   return out;
 }
 /**
