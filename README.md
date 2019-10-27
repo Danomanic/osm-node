@@ -50,6 +50,44 @@ core.password = 'securepassword';
 
 ```
 
+Usage
+---------------
+```js
+const osm = require('osm');
+
+// MEMBERS
+
+// Get Members
+osm.getMembers();
+
+// Get Member Details (sectionid, memberid)
+osm.getMembersDetails(1234, 1234);
+
+
+// TERMS
+
+// Get Terms
+osm.getTerms();
+
+
+// PROGRAMME
+
+// Get Programme Summary (secitonid, termid)
+osm.getProgrammeSummary(1234, 1234);
+
+
+// EVENTS
+
+// Get Event Summary (sectionid, termid)
+osm.getEventsSummary(1234, 1234);
+
+// Get Event Structure (sectionid, eventid)
+osm.getEventStructure(1234, 1234)
+
+// Get Event Attendance (sectionid, eventid, termid)
+osm.getEventAttendance(1234, 1234, 1234)
+```
+
 Changelog
 ---------
 
