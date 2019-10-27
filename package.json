@@ -1,9 +1,10 @@
 {
   "name": "osm-node",
-  "version": "0.0.1",
-  "description": "Example node  project for OSM (Online Scout Manager) API",
-  "main": "index.js",
+  "version": "0.0.2",
+  "description": "Node package for interacting with OSM (Online Scout Manager) API",
+  "main": "./src",
   "scripts": {
+    "lint": "eslint",
     "test": "mocha --reporter spec"
   },
   "repository": {
