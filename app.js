@@ -123,7 +123,7 @@ async function getProgrammeSummary(sectionid, termid) {
 async function getEventsSummary(sectionid, termid) {
   termid || (termid = '-1');
   const parts = [];
-  const out = await performQuery(`ext/events/summary/?action=get&sectionid=${sectionid}&termid=${termid}`, parts);
+  const out = await performQuery(`/ext/events/summary/?action=get&sectionid=${sectionid}&termid=${termid}`, parts);
   return out;
 }
 
