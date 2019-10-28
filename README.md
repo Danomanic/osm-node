@@ -1,6 +1,6 @@
-OSM Node Example
+OSM Node
 =======================
-This is an example of how to access Online Scout Mananager via NodeJS. This example makes a simple authorisation call.
+Make API calls to OSM (Online Scout Manager) in Node.
 
 Prerequisites
 -------------
