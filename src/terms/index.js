@@ -6,5 +6,5 @@ const core = require('../core');
 module.exports.getTerms = async () => {
   const parts = [];
   const out = await core.performQuery('/api.php?action=getTerms', parts);
-  return (out);
+  return out;
 };

@@ -4,8 +4,9 @@
   "description": "Node package for interacting with OSM (Online Scout Manager) API",
   "main": "./src",
   "scripts": {
-    "lint": "eslint",
-    "test": "mocha --reporter spec"
+    "lint": "eslint src/",
+    "test": "mocha --reporter spec",
+    "coverage": "nyc --check-coverage --lines 90 --per-file --reporter=text mocha"
   },
   "repository": {
     "type": "git",
@@ -22,11 +23,13 @@
   },
   "homepage": "https://github.com/Danomanic/osm-node#readme",
   "devDependencies": {
+    "axios-mock-adapter": "^1.17.0",
     "chai": "^4.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
-    "mocha": "^6.2.2"
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1"
   },
   "dependencies": {
     "axios": "^0.19.0",
