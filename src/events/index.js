@@ -33,3 +33,14 @@ module.exports.getEventAttendance = async (sectionid, eventid, termid) => {
   const out = await core.performQuery(`/ext/events/event/?action=getAttendance&eventid=${eventid}&sectionid=${sectionid}&termid=${termid}`, parts);
   return out;
 };
+
+/**
+ * Get's attachments of a given Event
+ * @param {int} sectionid Section ID
+ * @param {int} eventid Event ID
+ */
+module.exports.getEventAttachments = async (sectionid, eventid) => {
+  const parts = [];
+  const out = await core.performQuery(`/ext/uploads/events/?action=listAttachments&sectionid=${sectionid}&eventid=${eventid}`, parts);
+  return out;
+};
