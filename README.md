@@ -9,51 +9,41 @@ Prerequisites
 - [Node.js 8.0+](http://nodejs.org)
 
 
-Getting Started
+Install
 ---------------
 
 The easiest way to get started is to clone the repository:
 
 ```bash
-# Get the latest snapshot
-git clone https://github.com/Danomanic/osm-node.git myproject
-
-# Change directory
-cd myproject
-
-# Install NPM dependencies
-npm install
-
-# Then simply start your app
-node app.js
+$ npm install osm-node
 ```
 
 Configuration
 ---------------
 
-Update the API ID and Token
+Set the API ID and Token
 ```js
-core.apiid = '<API-ID>';
-core.token = '<API-TOKEN>';
+osm.apiid = '<API-ID>';
+osm.token = '<API-TOKEN>';
 
-core.email = '<EMAIL>';
-core.password = '<PASSWORD>';
+osm.email = '<EMAIL>';
+osm.password = '<PASSWORD>';
 ```
 
 Example:
 ```js
-core.apiid = '123';
-core.token = '9b7782b7-0f28-4fd8-adb5-6da212e3217b';
+osm.apiid = '123';
+osm.token = '9b7782b7-0f28-4fd8-adb5-6da212e3217b';
 
-core.email = 'joe@blogs.com';
-core.password = 'securepassword';
+osm.email = 'joe@blogs.com';
+osm.password = 'securepassword';
 
 ```
 
 Usage
 ---------------
 ```js
-const osm = require('osm');
+const osm = require('osm-node');
 
 // MEMBERS
 
