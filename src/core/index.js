@@ -63,4 +63,5 @@ module.exports.authorise = async () => {
   const out = await this.performQuery('/users.php?action=authorise', parts);
   this.userid = out.userid;
   this.secret = out.secret;
+  return true;
 };
