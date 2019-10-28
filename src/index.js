@@ -39,7 +39,6 @@ async function main() {
   log(await events.getEventAttendance('<SECTIONID>', '<EVENTID>', '<TERMID>'));
   /* Get Event Attachments */
   log(await events.getEventAttachments('<SECTIONID>', '<EVENTID>'));
-
 }
 
 main();

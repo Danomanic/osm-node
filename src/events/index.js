@@ -28,7 +28,7 @@ module.exports.getEventStructure = async (sectionid, eventid) => {
  * @param {int} eventid Event ID
  * @param {int} termid Term ID
  */
-module.exports.getEventAttendance = async (sectionid, eventid, termid) => {
+module.exports.getEventAttendance = async (sectionid, eventid, termid = -1) => {
   const parts = [];
   const out = await core.performQuery(`/ext/events/event/?action=getAttendance&eventid=${eventid}&sectionid=${sectionid}&termid=${termid}`, parts);
   return out;
@@ -42,5 +42,16 @@ module.exports.getEventAttendance = async (sectionid, eventid, termid) => {
 module.exports.getEventAttachments = async (sectionid, eventid) => {
   const parts = [];
   const out = await core.performQuery(`/ext/uploads/events/?action=listAttachments&sectionid=${sectionid}&eventid=${eventid}`, parts);
+  return out;
+};
+
+/**
+ * Get's a list of items (equipment) for an event
+ * @param {int} sectionid Section ID
+ * @param {int} eventid Event ID
+ */
+module.exports.getEventEquipment = async (sectionid, eventid) => {
+  const parts = [];
+  const out = await core.performQuery(`/ext/quartermaster/eventbookings/?action=loadListsForEvent&sectionid=${sectionid}&eventid=${eventid}`, parts);
   return out;
 };
