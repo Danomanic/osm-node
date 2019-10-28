@@ -45,6 +45,12 @@ Usage
 ```js
 const osm = require('osm-node');
 ```
+
+### Core
+```js
+// MUST be called before calling other methods.
+osm.authorise();
+```
 ### Members
 ```js
 // Get Members
