@@ -23,3 +23,14 @@ module.exports.getMemberDetails = async (sectionid, memberid) => {
   const out = await core.performQuery(`/ext/customdata/?action=getData&section_id=${sectionid}`, parts);
   return out;
 };
+
+/**
+ * Get's Attendance
+ * @param {int} sectionid Section ID
+ * @param {int} termid Term ID
+ */
+module.exports.getAttendance = async (sectionid, termid) => {
+  const parts = [];
+  const out = await core.performQuery(`/ext/members/attendance/?action=get&sectionid=${sectionid}&termid=${termid}`, parts);
+  return out;
+};
