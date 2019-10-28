@@ -44,25 +44,3 @@ module.exports.getEventAttachments = async (sectionid, eventid) => {
   const out = await core.performQuery(`/ext/uploads/events/?action=listAttachments&sectionid=${sectionid}&eventid=${eventid}`, parts);
   return out;
 };
-
-/**
- * Create event
- * @param {int} sectionid Section ID
- * @param {string} name Event Name
- * @param {string} location Location
- * @param {string} startdate Start Date
- * @param {string} starttime Start Time
- * @param {string} enddate End Date
- * @param {string} endtime End Time
- * @param {int} attendancelimit Attendance Limit
- * @param {bool} limitincludesleaders Limit Include Leaders
- * @param {float} cost Cost of event
- * @param {string} tbc Cost TBC
- * @param {string} confdate Confirmation sate
- *  
- */
-module.exports.createEvent = async (sectionid) => {
-  const parts = [];
-  const out = await core.performQuery(`/ext/uploads/events/?action=listAttachments&sectionid=${sectionid}&eventid=${eventid}`, parts);
-  return out;
-};
