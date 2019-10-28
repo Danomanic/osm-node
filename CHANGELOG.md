@@ -1,6 +1,10 @@
 # Changelog
 ---------
 
+### 0.0.3 (Oct 28, 2019)
+- Refactored code and readme
+- Added event and programme functions 
+
 ### 0.0.2 (Sept 05, 2019)
 - Refactored code
 - Added function comments
