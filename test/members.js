@@ -52,3 +52,20 @@ describe('getMemberDetails', () => {
     expect(response).to.equal(data);
   });
 });
+
+describe('getAttendance', () => {
+  it('Should call API and return response successfully', async () => {
+    // Arrange
+    const sectionid = 1234;
+    const termid = 5678;
+    const mock = new MockAdapter(axios);
+    const data = 'test';
+    mock.onPost(`https://www.onlinescoutmanager.co.uk/ext/members/attendance/?action=get&sectionid=${sectionid}&termid=${termid}`).reply(200, data);
+
+    // Act
+    const response = await members.getAttendance(sectionid, termid);
+
+    // Assert
+    expect(response).to.equal(data);
+  });
+});
