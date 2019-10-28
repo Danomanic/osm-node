@@ -6,7 +6,7 @@ const members = require('../src/members');
 
 
 describe('getMembers', () => {
-  it('Should call API and return response successfully', async () => {
+  it('Should call API and return response successfully when supplied with sectionid and termid', async () => {
     // Arrange
     const sectionid = 1234;
     const termid = 5678;
@@ -16,6 +16,19 @@ describe('getMembers', () => {
 
     // Act
     const response = await members.getMembers(sectionid, termid);
+
+    // Assert
+    expect(response).to.equal(data);
+  });
+  it('Should call API and return response successfully when supplied with just sectionid', async () => {
+    // Arrange
+    const sectionid = 1234;
+    const mock = new MockAdapter(axios);
+    const data = 'test';
+    mock.onPost(`https://www.onlinescoutmanager.co.uk/ext/members/contact/?action=getListOfMembers&sort=dob&sectionid=${sectionid}&termid=-1`).reply(200, data);
+
+    // Act
+    const response = await members.getMembers(sectionid);
 
     // Assert
     expect(response).to.equal(data);
