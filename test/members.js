@@ -54,7 +54,7 @@ describe('getMemberDetails', () => {
 });
 
 describe('getAttendance', () => {
-  it('Should call API and return response successfully', async () => {
+  it('Should call API and return response successfully when called with sectionid and termid', async () => {
     // Arrange
     const sectionid = 1234;
     const termid = 5678;
@@ -65,6 +65,48 @@ describe('getAttendance', () => {
     // Act
     const response = await members.getAttendance(sectionid, termid);
 
+    // Assert
+    expect(response).to.equal(data);
+  });
+  it('Should call API and return response successfully when called with just sectionid', async () => {
+    // Arrange
+    const sectionid = 1234;
+    const mock = new MockAdapter(axios);
+    const data = 'test';
+    mock.onPost(`https://www.onlinescoutmanager.co.uk/ext/members/attendance/?action=get&sectionid=${sectionid}&termid=-1`).reply(200, data);
+
+    // Act
+    const response = await members.getAttendance(sectionid);
+
+    // Assert
+    expect(response).to.equal(data);
+  });
+});
+
+
+describe('getPatrolsWithPeople', () => {
+  it('Should call API and return response successfully called with sectionid and termid', async () => {
+    // Arrange
+    const sectionid = 1234;
+    const termid = 5678;
+    const mock = new MockAdapter(axios);
+    const data = 'test';
+    mock.onPost(`https://www.onlinescoutmanager.co.uk/ext/members/patrols/?action=getPatrolsWithPeople&sectionid=${sectionid}&termid=${termid}`).reply(200, data);
+
+    // Act
+    const response = await members.getPatrols(sectionid, termid);
+    // Assert
+    expect(response).to.equal(data);
+  });
+  it('Should call API and return response successfully called with just sectionid', async () => {
+    // Arrange
+    const sectionid = 1234;
+    const mock = new MockAdapter(axios);
+    const data = 'test';
+    mock.onPost(`https://www.onlinescoutmanager.co.uk/ext/members/patrols/?action=getPatrolsWithPeople&sectionid=${sectionid}&termid=-1`).reply(200, data);
+
+    // Act
+    const response = await members.getPatrols(sectionid);
     // Assert
     expect(response).to.equal(data);
   });
