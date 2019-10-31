@@ -29,8 +29,19 @@ module.exports.getMemberDetails = async (sectionid, memberid) => {
  * @param {int} sectionid Section ID
  * @param {int} termid Term ID
  */
-module.exports.getAttendance = async (sectionid, termid) => {
+module.exports.getAttendance = async (sectionid, termid = -1) => {
   const parts = [];
   const out = await core.performQuery(`/ext/members/attendance/?action=get&sectionid=${sectionid}&termid=${termid}`, parts);
+  return out;
+};
+
+/**
+ * Get's Patrols
+ * @param {int} sectionid Section ID
+ * @param {int} termid Term ID
+ */
+module.exports.getPatrols = async (sectionid, termid = -1) => {
+  const parts = [];
+  const out = await core.performQuery(`/ext/members/patrols/?action=getPatrolsWithPeople&sectionid=${sectionid}&termid=${termid}`, parts);
   return out;
 };
