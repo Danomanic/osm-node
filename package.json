@@ -1,6 +1,6 @@
 {
   "name": "osm-node",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Node package for interacting with OSM (Online Scout Manager) API",
   "main": "./src",
   "scripts": {
