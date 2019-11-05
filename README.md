@@ -23,71 +23,70 @@ Configuration
 
 Set the API ID and Token
 ```js
-osm.apiid = '<API-ID>';
-osm.token = '<API-TOKEN>';
+osm.core.apiid = '<API-ID>';
+osm.core.token = '<API-TOKEN>';
 
-osm.email = '<EMAIL>';
-osm.password = '<PASSWORD>';
-```
-
-Example:
-```js
-osm.apiid = '123';
-osm.token = '9b7782b7-0f28-4fd8-adb5-6da212e3217b';
-
-osm.email = 'joe@blogs.com';
-osm.password = 'securepassword';
-
+osm.core.email = '<EMAIL>';
+osm.core.password = '<PASSWORD>';
 ```
 
 Usage
 ---------------
 ```js
 const osm = require('osm-node');
+
+osm.core.apiid = '123';
+osm.core.token = '9b7782b7-0f28-4fd8-adb5-6da212e3217b';
+
+osm.core.email = 'joe@blogs.com';
+osm.core.password = 'securepassword';
 ```
 
 ### Core
 ```js
 // MUST be called before calling other methods.
-osm.authorise();
+osm.core.authorise();
 ```
 ### Members
 ```js
 // Get Members
-osm.getMembers();
+osm.members.getMembers();
 
 // Get Member Details (sectionid, memberid)
-osm.getMembersDetails(1234, 1234);
+osm.members.getMemberDetails(1234, 1234);
 
 // Get Attendance (sectionid, termid)
-osm.getAttendance(1234, 1234);
+osm.members.getAttendance(1234, 1234);
+
+// Get Patrols (sectionid, termid)
+osm.members.getPatrols(1234, 1234);
 ```
 
 ### Terms
 ```js
 // Get Terms
-osm.getTerms();
+osm.terms.getTerms();
 ```
 
 ### Programme
 ```js
 // Get Programme Summary (secitonid, termid)
-osm.getProgrammeSummary(1234, 1234);
+osm.programme.getProgrammeSummary(1234, 1234);
 ```
 
 ### Events
 ```js
 // Get Event Summary (sectionid, termid)
-osm.getEventsSummary(1234, 1234);
+osm.events.getEventsSummary(1234, 1234);
 
 // Get Event Structure (sectionid, eventid)
-osm.getEventStructure(1234, 1234);
+osm.events.getEventStructure(1234, 1234);
 
 // Get Event Attendance (sectionid, eventid, termid)
-osm.getEventAttendance(1234, 1234, 1234);
+osm.events.getEventAttendance(1234, 1234, 1234);
 
 // Get Event Attachments (sectionid, eventid)
-osm.getEventAttachments(1234, 1234);
+osm.events.getEventAttachments(1234, 1234);
 ```
 
 Changelog
