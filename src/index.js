@@ -11,5 +11,5 @@ module.exports = {
   members,
   programme,
   events,
-  sections
+  sections,
 };
