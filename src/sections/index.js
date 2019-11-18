@@ -5,8 +5,7 @@ const core = require('../core');
  */
 
 module.exports.getSectionsNationally = async () => {
-    const parts = [];
-    const out = await core.performQuery(`/ext/members/sectionplanning/?action=listSections`, parts);
-    return out;
-  };
-  
+  const parts = [];
+  const out = await core.performQuery('/ext/members/sectionplanning/?action=listSections', parts);
+  return out;
+};
